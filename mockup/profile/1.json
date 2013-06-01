@@ -1,0 +1,10 @@
+{
+  "name": "Example Charity",
+  "needs": [
+  { "tag": "food", "description": "Non-perishible food welcome."},
+  { "tag": "clothes", "description": "All sizes."}
+    ],
+      "services": [
+      { "tag":"shelter", "description":"Every night." }
+        ]
+}

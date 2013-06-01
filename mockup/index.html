@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <link href="/bundles/bootstrapper/public/css/bootstrap.min.css" media="all" type="text/css" rel="stylesheet">
+    <link href="/bundles/bootstrapper/public/css/bootstrap-responsive.min.css" media="all" type="text/css" rel="stylesheet">
+        <script src="/bundles/bootstrapper/public/js/jquery-1.9.1.min.js"></script>
+        <script src="/bundles/bootstrapper/public/js/bootstrap.min.js"></script>
+        <script>
+            function tagToElement(tag) {
+                return $("<li>").text(tag["tag"] + ": " + tag["description"]);
+            }
+            function addItems(items, element) {
+                $.each(items, function(i, item) {
+                    $(item).appendTo(element);
+                });
+            }
+
+            $(function() {
+                $.getJSON("profile/1.json", function(data) {
+                    $("h1").text(data["name"]);
+                    addItems(data["needs"].map(tagToElement), $("#needs"));
+                    addItems(data["services"].map(tagToElement), $("#services"));
+                });
+            });
+        </script>
+    </head>
+    <body>
+
+        Profile Page
+        <h1>Test</h1>
+        <h2>Needs</h2>
+        <ul id="needs">
+        </ul>
+        <h2>Services</h2>
+        <ul id="services">
+        </ul>
+
