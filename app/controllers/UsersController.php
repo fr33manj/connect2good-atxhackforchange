@@ -31,6 +31,18 @@ class UsersController extends BaseController {
 				'password' => Input::get('password')
 			));
 
+			// $data['activationCode'] = $user->GetActivationCode();
+			// $data['email'] = Input::get('email');
+			// $data['userId'] = $user->getId();
+
+			// //send email with link to activate.
+			// Mail::send('emails.auth.welcome', $data, function($m) use($data)
+			// {
+			//     $m->to($data['email'])->subject('Welcome to Laravel4 With Sentry');
+			// });
+
+			$user->attemptActivation($user->getActivationCode());
+
 			if( ! $user)
 			{
 				$data['errors'] = 'There was an issue when adding the user to the database';
@@ -89,7 +101,47 @@ class UsersController extends BaseController {
 		}
 		else
 		{
-			return Redirect::to('member/account');
+			return Redirect::to('users/account/'.$user->getId());
 		}
+	}
+
+	public function get_account($id)
+	{
+		try
+		{
+		    //Get the current user's id.
+			Sentry::check();
+			$currentUser = Sentry::getUser();
+
+		   	//Do they have admin access?
+			if ( $currentUser->hasAccess('admin'))
+			{
+				$data['user'] = Sentry::getUserProvider()->findById($id);
+				$data['userGroups'] = $data['user']->getGroups();
+				$data['allGroups'] = Sentry::getGroupProvider()->findAll();
+				return View::make('users.edit')->with($data);
+			} 
+			elseif ($currentUser->getId() == $id)
+			{
+				//They are not an admin, but they are viewing their own profile.
+				$data['user'] = Sentry::getUserProvider()->findById($id);
+				$data['userGroups'] = $data['user']->getGroups();
+				return View::make('users.edit')->with($data);
+			} else {
+				Session::flash('error', 'You don\'t have access to that user.');
+				return Redirect::to('/');
+			}
+
+		}
+		catch (Cartalyst\Sentry\UserNotFoundException $e)
+		{
+		    Session::flash('error', 'There was a problem accessing your account.');
+			return Redirect::to('/');
+		}
+	}
+
+	public function post_account($id)
+	{
+		
 	}
 }

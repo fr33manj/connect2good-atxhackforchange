@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -65,6 +64,7 @@
             {{ Form::button('Register', array('type' => 'submit', 'class' => 'btn btn-large btn-primary'))}}
         {{ Form::close() }}
     </div> <!-- /container -->
+    {{HTML::script("//ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js")}}
     {{HTML::script('//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js')}}
   </body>
 </html>
