@@ -44,6 +44,10 @@
       .bcard-body {
         padding-left: 0.5%;
         padding-right: 0.5%;
+        background-color: #fff;
+        margin-top: 2%;
+        margin-bottom: 2%;
+        font-size: 16px;
       }
 
       .bcard-footer {
@@ -57,6 +61,10 @@
         text-align: center;
       }
 
+      .tag-container ul li {
+        display: inline;
+      }
+
       #lists ul {
         list-style-type: none;
       }
@@ -65,7 +73,73 @@
     {{HTML::script('//ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js')}}
 
     <script type="text/javascript">
-      // $.ajax('');
+      $(document).ready(function(){
+        $("#search").click(function(){
+          var $tags = $("#tags").val();
+          $.ajax({
+            type: "POST",
+            url: "index.php/main/search",
+            data: "tags="+$tags,
+            dataType: "json",
+            success: function(results) {
+              $("#looking").empty();
+              $("#offering").empty();
+              $.each(results, function(i, result){
+                $("body").append(generateModal(result));
+                if(result.type == 0)
+                {
+                  $("#offering").append(generateCard(result));
+                }
+                else
+                {
+                  $("#looking").append(generateCard(result));
+                }
+              });
+            },
+          });
+        });
+
+        $("")
+      });
+
+      function generateCard(item)
+      {
+        var $card = '<li><div class="bcard">';
+        $card += '<div class="bcard-header"><h4>' + item.name + '</h4></div>';
+        $card += '<div class="bcard-body clearfix">';
+        $card += '<span class="pull-left">' + item.contact + '</span>';
+        $card += '<span class="pull-right">' + item.contact + '</span>';
+        $card += '<div class="row"><div class="span12"><p class="clearfix" style="padding-left: 5%; text-align: center;"><strong>Needs the following:</strong></p></div></div>';
+        $card += '<div class="row" style="margin-left: 2%"><div class="tag-container"><ul>';
+        $card += generateTagList(item.tags);
+        $card += '</ul></div></div>';
+        $card += '</div>';
+        $card += '<div class="bcard-footer"><a href="#'+item.id+'Modal" data-toggle="modal">Click for more</a></div>';
+        $card += '</div></li>';
+
+        return $card;
+      }
+
+      function generateModal(item)
+      {
+        var $modal = '<div id="'+item.id+'Modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">'
+        $modal += '<div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button><h3 id="'+item.id+'ModalLabel">'+item.name+'</h3></div>';
+        $modal += '<div class="modal-body"><p>'+item.about+'</p>';
+        $modal += '<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=St.+Edwards,+Austin,+TX&amp;aq=1&amp;oq=St.+&amp;sll=30.307761,-97.753401&amp;sspn=0.639033,1.220856&amp;ie=UTF8&amp;hq=&amp;hnear=St+Edwards,+Austin,+Travis,+Texas&amp;t=m&amp;z=14&amp;ll=30.226409,-97.755252&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=St.+Edwards,+Austin,+TX&amp;aq=1&amp;oq=St.+&amp;sll=30.307761,-97.753401&amp;sspn=0.639033,1.220856&amp;ie=UTF8&amp;hq=&amp;hnear=St+Edwards,+Austin,+Travis,+Texas&amp;t=m&amp;z=14&amp;ll=30.226409,-97.755252" style="color:#0000FF;text-align:left">View Larger Map</a></small></div>';
+        $modal += '</div>';
+        return $modal;
+      }
+
+      function generateTagList(tags)
+      {
+        var $list = '';
+
+        $.each(tags, function(i, tag){
+          $list += '<li>'+tags[i]+'</li>,';
+        });
+
+        return $list;
+      }
     </script>
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
