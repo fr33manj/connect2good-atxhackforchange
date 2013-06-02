@@ -18,8 +18,14 @@ class MainController extends BaseController {
 	public function post_search()
 	{
 		$tags = Input::get('tags');
+		$matches=array();
+		preg_match('@\s*.+\s*,*@g',
+    	$tags, $matches);
+		$results = $matches[0];
+		$results=str_replace("/\s*,\*/",",",$results);
+		
 		// var_dump($tags);
-		$form_tags = explode(',', $tags);
+		$form_tags = explode(',', $results);
 
 		// var_dump($form_tags);
 		$results = array();
