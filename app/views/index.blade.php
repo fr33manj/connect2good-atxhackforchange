@@ -35,14 +35,14 @@
               <h3>Joe Swanson Co.</h3>
             </div>
             <div class="bcard-body">
-              <div class="row">
+              <!-- <div class="row"> -->
                 <div class="pull-left">
                   (716)647-7383
                 </div>
                 <div class="pull-right">
                   example@example.com
                 </div>
-              </div>
+              <!-- </div> -->
             </div>
             <div class="bcard-footer">
               <a href="#">Click for more...</a>
