@@ -28,22 +28,28 @@
   </div>
   <div class="row-fluid" id="lists">
     <div class="span6 well">
-      <ul>
-        <li class="bcard">
-          <p>
-            <strong>Name:</strong> Joe Swanson Co.<br>
-            <strong>Contact:</strong> (716) 647-7383<br>
-            <strong>Needs:</strong> Computers, Binders<br>
-          </p>
+      <ul id="looking">
+        <li>
+          <div class="bcard">
+            <div class="bcard-heading">
+
+            </div>
+            <div class="bcard-body">
+
+            </div>
+            <div class="bcard-footer">
+
+            </div>
+          </div>
         </li>
-        <li class="bcard">
+        <li>
           <p>
             <strong>Name:</strong> HERPADERPA Inc.<br>
             <strong>Contact:</strong> (716) 647-7383<br>
             <strong>Needs:</strong> Toner, Printers<br>
           </p>
         </li>
-        <li class="bcard">
+        <li>
           <p>
             <strong>Name:</strong> Surfin Co.<br>
             <strong>Contact:</strong> (716) 647-7383<br>
@@ -53,22 +59,22 @@
       </ul>
     </div>
     <div class="span6 well">
-      <ul>
-        <li class="bcard">
+      <ul id="offering">
+        <li>
           <p>
             <strong>Name:</strong> Joe Swanson Co.<br>
             <strong>Contact:</strong> (716) 647-7383<br>
             <strong>Needs:</strong> Computers, Binders<br>
           </p>
         </li>
-        <li class="bcard">
+        <li>
           <p>
             <strong>Name:</strong> HERPADERPA Inc.<br>
             <strong>Contact:</strong> (716) 647-7383<br>
             <strong>Needs:</strong> Toner, Printers<br>
           </p>
         </li>
-        <li class="bcard">
+        <li>
           <p>
             <strong>Name:</strong> Surfin Co.<br>
             <strong>Contact:</strong> (716) 647-7383<br>
