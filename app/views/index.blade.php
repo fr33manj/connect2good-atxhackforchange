@@ -27,18 +27,25 @@
     </div>
   </div>
   <div class="row-fluid" id="lists">
-    <div class="span6 well">
+    <div class="span6 well well-small">
       <ul id="looking">
         <li>
           <div class="bcard">
-            <div class="bcard-heading">
-
+            <div class="bcard-header">
+              <h3>Joe Swanson Co.</h3>
             </div>
             <div class="bcard-body">
-
+              <div class="row">
+                <div class="">
+                  (716)647-7383
+                </div>
+                <div class="pull-right">
+                  example@example.com
+                </div>
+              </div>
             </div>
             <div class="bcard-footer">
-
+              <a href="#">Click for more...</a>
             </div>
           </div>
         </li>
@@ -58,7 +65,7 @@
         </li>
       </ul>
     </div>
-    <div class="span6 well">
+    <div class="span6 well well-small">
       <ul id="offering">
         <li>
           <p>

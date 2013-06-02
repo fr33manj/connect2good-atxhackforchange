@@ -35,8 +35,26 @@
 
       .bcard {
         background-color: #fff;
-        border: 1px solid #000;
+        box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
         margin-bottom: 1%;
+        border-radius: 4px;
+        /*padding: 1%;*/
+      }
+
+      .bcard-body {
+        padding-left: 0.5%;
+        padding-right: 0.5%;
+      }
+
+      .bcard-footer {
+        background-color: #f5f5f5;
+        border-top: 1px solid #ddd;
+        text-align: center;
+      }
+
+      .bcard-header {
+        border-bottom: 1px solid #eee;
+        text-align: center;
       }
 
       #lists ul {
