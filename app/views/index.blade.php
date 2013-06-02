@@ -36,7 +36,7 @@
             </div>
             <div class="bcard-body">
               <div class="row">
-                <div class="">
+                <div class="pull-left">
                   (716)647-7383
                 </div>
                 <div class="pull-right">
