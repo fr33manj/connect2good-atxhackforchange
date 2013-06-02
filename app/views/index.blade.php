@@ -12,8 +12,8 @@
   </div>
   <div class="row-fluid">
     <div class="span12">
-      {{Form::open(array('url' => 'main/search'))}}
-        {{Form::textarea('items', '', array('rows' => '5'))}}<br>
+      {{Form::open(array('url' => 'index.php/main/search'))}}
+        {{Form::textarea('tags', '', array('rows' => '5'))}}<br>
         {{Form::submit('Submit', array('class' => 'btn btn-large btn-primary'))}}
       {{Form::close()}}
     </div>

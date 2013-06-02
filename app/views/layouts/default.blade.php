@@ -44,6 +44,12 @@
       }
     </style>
 
+    {{HTML::script('//ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js')}}
+
+    <script type="text/javascript">
+      // $.ajax('');
+    </script>
+
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="../assets/js/html5shiv.js"></script>
